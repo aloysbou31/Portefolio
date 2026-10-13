@@ -1,5 +1,3 @@
-# Portefolio
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,21 +6,25 @@
     <title>Portfolio - BTS SIO SLAM</title>
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --sidebar-bg: #1e293b;
+            --bg-color: #f8fafc;
+            --sidebar-bg: #0f172a;
             --sidebar-color: #94a3b8;
             --sidebar-hover: #38bdf8;
             --sidebar-active: #0ea5e9;
             --text-color: #334155;
             --card-bg: #ffffff;
             --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+            --border-color: #e2e8f0;
         }
 
+        /* Correction du sélecteur universel (*) */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,11 +40,14 @@
             background-color: var(--sidebar-bg);
             color: #fff;
             position: fixed;
-            height: 100%;
+            top: 0;
+            left: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            z-index: 100;
         }
 
         .sidebar-header {
@@ -66,6 +71,7 @@
             list-style: none;
             padding: 20px 0;
             flex-grow: 1;
+            overflow-y: auto;
         }
 
         .sidebar-menu li {
@@ -101,15 +107,16 @@
             margin-left: 260px;
             flex-grow: 1;
             padding: 40px;
-            max-width: 1000px;
+            max-width: 1100px;
         }
 
         section {
             background-color: var(--card-bg);
-            padding: 30px;
+            padding: 35px;
             margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
         }
 
         section h1 {
@@ -123,28 +130,65 @@
         section h2 {
             font-size: 1.3rem;
             color: #475569;
-            margin-top: 20px;
+            margin-top: 25px;
             margin-bottom: 10px;
         }
 
         p {
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 15px;
+            color: #475569;
+        }
+
+        /* Boutons améliorés */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background-color: var(--primary-color);
             color: white;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.2s;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.1s;
         }
 
         .btn:hover {
-            background-color: #0284c7;
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+        }
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        /* Badges de compétences (Idéal pour BTS SIO) */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
         /* Responsive pour mobile */
@@ -194,18 +238,33 @@
             <h1>Accueil</h1>
             <p>Bienvenue sur mon portfolio officiel réalisé dans le cadre de mon <strong>BTS SIO (Services Informatiques aux Organisations)</strong> option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
             <p>Ce site regroupe l'ensemble de mon parcours, mes compétences techniques, mes projets professionnels ainsi que mes travaux de veille technologique.</p>
+            
+            <h2>Compétences clés</h2>
+            <div class="skills-container">
+                <span class="skill-badge">PHP / Symfony</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">SQL / MySQL</span>
+                <span class="skill-badge">Java / C#</span>
+                <span class="skill-badge">Git & GitHub</span>
+                <span class="skill-badge">HTML5 / CSS3</span>
+            </div>
         </section>
 
         <section id="cv">
             <h1>Curriculum Vitae</h1>
-            <p>Retrouvez ci-dessous mon parcours académique, mes expériences professionnelles et mes compétences en développement et réseaux.</p>
-            <a href="#" class="btn">Télécharger mon CV (PDF)</a>
+            <p>Retrouvez ci-dessous mon parcours académique, mes expériences professionnelles et mes compétences en développement.</p>
+            <div class="btn-group">
+                <a href="#" class="btn">Télécharger mon CV (PDF)</a>
+                <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">Profil LinkedIn</a>
+            </div>
         </section>
 
         <section id="tableau-synthese">
             <h1>Tableau de Synthèse</h1>
-            <p>Le tableau de synthèse présente de manière globale les réalisations professionnelles menées au cours de ma formation.</p>
-            <a href="#" class="btn">Voir le Tableau de Synthèse</a>
+            <p>Le tableau de synthèse présente de manière globale les réalisations professionnelles menées au cours de ma formation, conformément aux attendus de l'épreuve E4.</p>
+            <div class="btn-group">
+                <a href="#" class="btn">Voir le Tableau de Synthèse</a>
+            </div>
         </section>
 
         <section id="vt-cyber">
@@ -215,7 +274,7 @@
 
         <section id="vt-choisie">
             <h1>Veille Technologique : Thème Libre</h1>
-            <p>Présentation de ma seconde thématique de veille technologique axée sur une innovation ou un domaine technique spécifique.</p>
+            <p>Présentation de ma seconde thématique de veille technologique axée sur une innovation ou un domaine technique spécifique (ex. Intelligence Artificielle, DevOps, etc.).</p>
         </section>
 
         <section id="stage1">
@@ -225,12 +284,12 @@
 
         <section id="stage2">
             <h1>Stage de 2ème année</h1>
-            <p>Bilan de mon stage de deuxième année : présentation du projet principal d'infrastructure ou de développement mené en entreprise.</p>
+            <p>Bilan de mon stage de deuxième année : présentation du projet principal de développement mené en entreprise.</p>
         </section>
     </main>
 
     <script>
-        // Script simple pour animer le menu actif au scroll
+        // Script pour animer le menu actif au scroll
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar-menu a');
 
@@ -238,7 +297,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 60) {
+                if (pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
