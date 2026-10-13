@@ -74,7 +74,7 @@
         }
 
         .sidebar-header {
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -82,19 +82,50 @@
         .sidebar-header h2 {
             font-size: 1.3rem;
             color: #fff;
-            margin-bottom: 5px;
-            text-align: center;
+            margin-bottom: 4px;
         }
 
         .sidebar-header p {
             font-size: 0.85rem;
             color: var(--sidebar-color);
-            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Liens rapides dans la sidebar */
+        .sidebar-quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sidebar-quick-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar-quick-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .sidebar-quick-btn.linkedin-btn:hover {
+            background-color: #0a66c2;
         }
 
         .sidebar-menu {
             list-style: none;
-            padding: 20px 0;
+            padding: 15px 0;
             flex-grow: 1;
             overflow-y: auto;
         }
@@ -300,6 +331,15 @@
             <div class="sidebar-header">
                 <h2>Aloys Bouvier</h2>
                 <p>BTS SIO SLAM</p>
+                <!-- Boutons d'accès rapide dans la sidebar -->
+                <div class="sidebar-quick-links">
+                    <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="sidebar-quick-btn" title="Télécharger le CV">
+                        <i class="fa-solid fa-file-pdf"></i> CV PDF
+                    </a>
+                    <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="sidebar-quick-btn linkedin-btn" title="Profil LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="#accueil" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
@@ -329,6 +369,11 @@
             <p>Bienvenue sur mon portfolio officiel. Je m'appelle <strong>Aloys Bouvier</strong>, étudiant en <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
             <p>Passionné par le développement d'applications et la sécurité informatique, je conçois des solutions logicielles performantes, ergonomiques et adaptées aux besoins des utilisateurs.</p>
             
+            <div class="btn-group">
+                <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="btn"><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV</a>
+                <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="btn btn-linkedin"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
+            </div>
+
             <h2>Compétences & Stack Technique</h2>
             <div class="skills-container">
                 <span class="skill-badge"><i class="fa-brands fa-python"></i> Python (Kivy, Streamlit)</span>
