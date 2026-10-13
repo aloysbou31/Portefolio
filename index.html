@@ -4,409 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Aloys Bouvier | BTS SIO SLAM</title>
+    <meta name="description" content="Portfolio d'Aloys Bouvier, étudiant en BTS SIO option SLAM : projets, veilles technologiques, stages et compétences en développement d'applications.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%BB%3C/text%3E%3C/svg%3E">
+
     <!-- FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Variables Mode Clair */
-        :root {
-            --bg-color: #f8fafc;
-            --sidebar-bg: #0f172a;
-            --sidebar-color: #94a3b8;
-            --sidebar-hover: #38bdf8;
-            --sidebar-active: #0ea5e9;
-            --text-color: #334155;
-            --text-muted: #64748b;
-            --card-bg: #ffffff;
-            --primary-color: #0ea5e9;
-            --primary-hover: #0284c7;
-            --border-color: #e2e8f0;
-            --badge-bg: #e0f2fe;
-            --badge-color: #0369a1;
-        }
 
-        /* Variables Mode Sombre */
-        [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --sidebar-bg: #020617;
-            --sidebar-color: #94a3b8;
-            --sidebar-hover: #38bdf8;
-            --sidebar-active: #38bdf8;
-            --text-color: #f1f5f9;
-            --text-muted: #cbd5e1;
-            --card-bg: #1e293b;
-            --primary-color: #38bdf8;
-            --primary-hover: #0ea5e9;
-            --border-color: #334155;
-            --badge-bg: #1e3a8a;
-            --badge-color: #93c5fd;
-        }
+    <!-- Styles partagés par toutes les pages -->
+    <link rel="stylesheet" href="style.css">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            min-height: 100vh;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Barre latérale gauche */
-        aside {
-            width: 270px;
-            background-color: var(--sidebar-bg);
-            color: #fff;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-        }
-
-        .sidebar-header {
-            padding: 25px 15px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar-header h2 {
-            font-size: 1.3rem;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .sidebar-header p {
-            font-size: 0.85rem;
-            color: var(--sidebar-color);
-            margin-bottom: 15px;
-        }
-
-        .sidebar-quick-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .sidebar-quick-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .sidebar-quick-btn:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-            color: #fff;
-        }
-
-        .sidebar-quick-btn.linkedin-btn:hover {
-            background-color: #0a66c2;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            padding: 15px 0;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .sidebar-menu li {
-            margin: 4px 0;
-        }
-
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 25px;
-            color: var(--sidebar-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-left-color: var(--sidebar-active);
-        }
-
-        .sidebar-footer {
-            padding: 20px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--sidebar-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .theme-toggle-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Contenu principal */
-        main {
-            margin-left: 270px;
-            flex-grow: 1;
-            padding: 40px;
-            max-width: 1100px;
-        }
-
-        section {
-            background-color: var(--card-bg);
-            padding: 35px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        section h1 {
-            font-size: 1.6rem;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-align: left;
-        }
-
-        section h2 {
-            font-size: 1.25rem;
-            color: var(--text-color);
-            margin-top: 25px;
-            margin-bottom: 12px;
-            text-align: left;
-        }
-
-        p {
-            line-height: 1.7;
-            margin-bottom: 15px;
-            color: var(--text-muted);
-            text-align: left;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .project-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            background-color: var(--bg-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-            justify-content: flex-start;
-        }
-
-        .skill-badge {
-            background-color: var(--badge-bg);
-            color: var(--badge-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            justify-content: flex-start;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--primary-color);
-            color: #ffffff !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: background 0.2s, transform 0.1s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-linkedin {
-            background-color: #0a66c2;
-        }
-        .btn-linkedin:hover {
-            background-color: #044181;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            aside {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            main {
-                margin-left: 0;
-                padding: 20px;
-            }
-        }
-    </style>
+    <!-- Script partagé (thème appliqué dès le chargement, sans "defer") -->
+    <script src="script.js"></script>
 </head>
 <body>
 
-    <!-- Barre latérale commune (liens mis à jour vers de vraies pages HTML) -->
+    <!-- Barre latérale commune : à recopier sur chaque page -->
     <aside>
         <div>
             <div class="sidebar-header">
                 <h2>Aloys Bouvier</h2>
                 <p>BTS SIO SLAM</p>
                 <div class="sidebar-quick-links">
-                    <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="sidebar-quick-btn" title="Télécharger le CV">
-                        <i class="fa-solid fa-file-pdf"></i> CV PDF
+                    <a href="CV_Aloys_Bouvier.pdf" target="_blank" rel="noopener" class="sidebar-quick-btn" title="Télécharger le CV">
+                        <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> CV PDF
                     </a>
-                    <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="sidebar-quick-btn linkedin-btn" title="Profil LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" rel="noopener" class="sidebar-quick-btn linkedin-btn" title="Profil LinkedIn">
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
                     </a>
                 </div>
             </div>
-            <ul class="sidebar-menu">
+
+            <!-- Bouton menu : visible uniquement sur mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidebarMenu">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i> Menu
+            </button>
+
+            <ul class="sidebar-menu" id="sidebarMenu">
                 <!-- MODIFIER la classe "active" selon la page actuelle -->
-                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
-                <li><a href="projets.html"><i class="fa-solid fa-code"></i> Projets & Réalisations</a></li>
-                <li><a href="synthese.html"><i class="fa-solid fa-table"></i> Tab. Synthèse</a></li>
-                <li><a href="veille-cyber.html"><i class="fa-solid fa-shield-halved"></i> V.T. Cybersécurité</a></li>
-                <li><a href="veille-libre.html"><i class="fa-solid fa-microchip"></i> V.T. Thème Libre</a></li>
-                <li><a href="stage1.html"><i class="fa-solid fa-briefcase"></i> Stage 1ère année</a></li>
-                <li><a href="stage2.html"><i class="fa-solid fa-building"></i> Stage 2ème année</a></li>
+                <li><a href="index.html" class="active" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a></li>
+                <li><a href="projets.html"><i class="fa-solid fa-code" aria-hidden="true"></i> Projets &amp; Réalisations</a></li>
+                <li><a href="synthese.html"><i class="fa-solid fa-table" aria-hidden="true"></i> Tab. Synthèse</a></li>
+                <li><a href="veille-cyber.html"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> V.T. Cybersécurité</a></li>
+                <li><a href="veille-libre.html"><i class="fa-solid fa-microchip" aria-hidden="true"></i> V.T. Thème Libre</a></li>
+                <li><a href="stage1.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Stage 1ère année</a></li>
+                <li><a href="stage2.html"><i class="fa-solid fa-building" aria-hidden="true"></i> Stage 2ème année</a></li>
             </ul>
         </div>
+
         <div class="sidebar-footer">
-            <button class="theme-toggle-btn" id="themeToggleBtn">
-                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Passer en mode sombre">
+                <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
                 <span id="themeText">Mode Sombre</span>
             </button>
             <p>&copy; 2026 - Aloys Bouvier</p>
         </div>
     </aside>
 
-    <!-- Contenu Principal (Exemple pour la page d'Accueil index.html) -->
+    <!-- Contenu principal (page d'accueil) -->
     <main>
         <section>
-            <h1><i class="fa-solid fa-user-gear"></i> Portfolio BTS SIO SLAM</h1>
+            <h1><i class="fa-solid fa-user-gear" aria-hidden="true"></i> Portfolio BTS SIO SLAM</h1>
             <p>Bienvenue sur mon portfolio officiel. Je m'appelle <strong>Aloys Bouvier</strong>, étudiant en <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
             <p>Passionné par le développement d'applications et la sécurité informatique, je conçois des solutions logicielles performantes, ergonomiques et adaptées aux besoins des utilisateurs.</p>
-            
+
             <div class="btn-group">
-                <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="btn"><i class="fa-solid fa-file-arrow-down"></i> Consulter mon CV (PDF)</a>
-                <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="btn btn-linkedin"><i class="fa-brands fa-linkedin"></i> Mon Profil LinkedIn</a>
+                <a href="CV_Aloys_Bouvier.pdf" target="_blank" rel="noopener" class="btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Consulter mon CV (PDF)</a>
+                <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" rel="noopener" class="btn btn-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> Mon Profil LinkedIn</a>
             </div>
 
-            <h2>Compétences & Stack Technique</h2>
+            <h2>Compétences &amp; Stack Technique</h2>
             <div class="skills-container">
-                <span class="skill-badge"><i class="fa-brands fa-python"></i> Python (Kivy, Streamlit)</span>
-                <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML5 / CSS3 / JavaScript</span>
-                <span class="skill-badge"><i class="fa-solid fa-database"></i> SQL / SQLite</span>
-                <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git & Versioning</span>
-                <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> Réseaux & Sécurité</span>
+                <span class="skill-badge"><i class="fa-brands fa-python" aria-hidden="true"></i> Python (Kivy, Streamlit)</span>
+                <span class="skill-badge"><i class="fa-brands fa-html5" aria-hidden="true"></i> HTML5 / CSS3 / JavaScript</span>
+                <span class="skill-badge"><i class="fa-solid fa-database" aria-hidden="true"></i> SQL / SQLite</span>
+                <span class="skill-badge"><i class="fa-brands fa-git-alt" aria-hidden="true"></i> Git &amp; Versioning</span>
+                <span class="skill-badge"><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Réseaux &amp; Sécurité</span>
             </div>
         </section>
     </main>
 
-    <script>
-        // Gestion du thème sombre / clair
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeText = document.getElementById('themeText');
-        const html = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        setTheme(savedTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
-
-        function setTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            if (theme === 'dark') {
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.textContent = 'Mode Clair';
-            } else {
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.textContent = 'Mode Sombre';
-            }
-        }
-    </script>
 </body>
 </html>
