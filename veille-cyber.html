@@ -1,65 +1,469 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veille cybersécurité - Aloys Bouvier | BTS SIO SLAM</title>
-<meta name="description" content="Veille technologique sur la cybersécurité par Aloys Bouvier.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%BB%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Cybersécurité - Aloys Bouvier | BTS SIO SLAM</title>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables Mode Clair */
+        :root {
+            --bg-color: #f8fafc;
+            --sidebar-bg: #0f172a;
+            --sidebar-color: #94a3b8;
+            --sidebar-hover: #38bdf8;
+            --sidebar-active: #0ea5e9;
+            --text-color: #334155;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+            --border-color: #e2e8f0;
+            --badge-bg: #e0f2fe;
+            --badge-color: #0369a1;
+        }
+
+        /* Variables Mode Sombre */
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --sidebar-bg: #020617;
+            --sidebar-color: #94a3b8;
+            --sidebar-hover: #38bdf8;
+            --sidebar-active: #38bdf8;
+            --text-color: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --card-bg: #1e293b;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --border-color: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-color: #93c5fd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Barre latérale */
+        aside {
+            width: 270px;
+            background-color: var(--sidebar-bg);
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.85rem;
+            color: var(--sidebar-color);
+            margin-bottom: 15px;
+        }
+
+        .sidebar-quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sidebar-quick-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar-quick-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 15px 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu li {
+            margin: 4px 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 25px;
+            color: var(--sidebar-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--sidebar-active);
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--sidebar-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .theme-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contenu principal */
+        main {
+            margin-left: 270px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1100px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        section h1 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        /* Présentation des outils de veille */
+        .tools-box {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+        }
+
+        .tools-box ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .tools-box li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Grille des Articles de Veille */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .article-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            background-color: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+        }
+
+        .article-date {
+            color: var(--text-muted);
+        }
+
+        .article-badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .article-summary {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .article-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .article-link:hover {
+            color: var(--primary-hover);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<aside>
-<div>
-<div class="sidebar-header">
-<h2>Aloys Bouvier</h2>
-<p>BTS SIO SLAM</p>
-<div class="sidebar-quick-links">
-<a href="CV_Aloys_Bouvier.pdf" target="_blank" rel="noopener" class="sidebar-quick-btn" title="Télécharger le CV">
-<i class="fa-solid fa-file-pdf" aria-hidden="true"></i> CV PDF
-</a>
-<a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" rel="noopener" class="sidebar-quick-btn linkedin-btn" title="Profil LinkedIn">
-<i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-</a>
-</div>
-</div>
-<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidebarMenu">
-<i class="fa-solid fa-bars" aria-hidden="true"></i> Menu
-</button>
-<ul class="sidebar-menu" id="sidebarMenu">
-<li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a></li>
-<li><a href="projets.html"><i class="fa-solid fa-code" aria-hidden="true"></i> Projets &amp; Réalisations</a></li>
-<li><a href="synthese.html"><i class="fa-solid fa-table" aria-hidden="true"></i> Tab. Synthèse</a></li>
-<li><a href="veille-cyber.html" class="active" aria-current="page"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> V.T. Cybersécurité</a></li>
-<li><a href="veille-libre.html"><i class="fa-solid fa-microchip" aria-hidden="true"></i> V.T. Thème Libre</a></li>
-<li><a href="stage1.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Stage 1ère année</a></li>
-<li><a href="stage2.html"><i class="fa-solid fa-building" aria-hidden="true"></i> Stage 2ème année</a></li>
-</ul>
-</div>
-<div class="sidebar-footer">
-<button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Passer en mode sombre">
-<i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
-<span id="themeText">Mode Sombre</span>
-</button>
-<p>&copy; 2026 - Aloys Bouvier</p>
-</div>
-</aside>
-<main>
-<section>
-<h1><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Veille technologique : Cybersécurité</h1>
-<h2>Thème et objectifs</h2>
-<p>À compléter : pourquoi ce sujet, ce que je cherche à suivre.</p>
-<h2>Sources utilisées</h2>
-<ul>
-<li>ANSSI / CERT-FR</li>
-<li>CNIL</li>
-<li>À compléter</li>
-</ul>
-<h2>Articles et actualités</h2>
-<p>À compléter : date, titre, source, résumé en quelques lignes.</p>
-</section>
-</main>
+
+    <!-- Barre latérale -->
+    <aside>
+        <div>
+            <div class="sidebar-header">
+                <h2>Aloys Bouvier</h2>
+                <p>BTS SIO SLAM</p>
+                <div class="sidebar-quick-links">
+                    <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="sidebar-quick-btn">
+                        <i class="fa-solid fa-file-pdf"></i> CV PDF
+                    </a>
+                    <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="sidebar-quick-btn linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Accueil</a></li>
+                <li><a href="projets.html"><i class="fa-solid fa-code"></i> Projets & Réalisations</a></li>
+                <li><a href="synthese.html"><i class="fa-solid fa-table"></i> Tab. Synthèse</a></li>
+                <li><a href="veille-cyber.html" class="active"><i class="fa-solid fa-shield-halved"></i> V.T. Cybersécurité</a></li>
+                <li><a href="veille-libre.html"><i class="fa-solid fa-microchip"></i> V.T. Thème Libre</a></li>
+                <li><a href="stage1.html"><i class="fa-solid fa-briefcase"></i> Stage 1ère année</a></li>
+                <li><a href="stage2.html"><i class="fa-solid fa-building"></i> Stage 2ème année</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="themeToggleBtn">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+                <span id="themeText">Mode Sombre</span>
+            </button>
+            <p>&copy; 2026 - Aloys Bouvier</p>
+        </div>
+    </aside>
+
+    <!-- Contenu Principal -->
+    <main>
+        <section>
+            <h1><i class="fa-solid fa-shield-virus"></i> Veille Technologique : Cybersécurité</h1>
+            <p>Dans le cadre de mon BTS SIO, j'assure un suivi régulier des vulnérabilités, failles de sécurité, bonnes pratiques de développement sécurisé (OWASP) et alertes émises par les autorités (ANSSI, CERT-FR).</p>
+            
+            <div class="tools-box">
+                <strong><i class="fa-solid fa-square-rss"></i> Mes outils de veille :</strong>
+                <ul>
+                    <li><i class="fa-solid fa-check text-primary"></i> Feedly (Flux RSS)</li>
+                    <li><i class="fa-solid fa-check text-primary"></i> Alertes CERT-FR & ANSSI</li>
+                    <li><i class="fa-solid fa-check text-primary"></i> Zataz & Usine Digitale</li>
+                    <li><i class="fa-solid fa-check text-primary"></i> GitHub Advisory Database</li>
+                </ul>
+            </div>
+
+            <h2>Derniers articles & Synthèses</h2>
+
+            <div class="articles-grid">
+
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <div>
+                        <div class="article-header">
+                            <span class="article-date"><i class="fa-regular fa-calendar"></i> Octobre 2026</span>
+                            <span class="article-badge">OWASP / Web</span>
+                        </div>
+                        <h3 class="article-title">Protection contre les injections SQL & XSS en PHP</h3>
+                        <p class="article-summary">Synthèse des meilleures pratiques de requêtes préparées (PDO) et de nettoyage des entrées utilisateurs pour prévenir les attaques applicatives courantes.</p>
+                    </div>
+                    <div class="article-footer">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Source : OWASP Top 10</span>
+                        <a href="#" class="article-link">Lire la synthèse <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <div>
+                        <div class="article-header">
+                            <span class="article-date"><i class="fa-regular fa-calendar"></i> Septembre 2026</span>
+                            <span class="article-badge">Alerte ANSSI</span>
+                        </div>
+                        <h3 class="article-title">Vigilance renforcée sur les bibliothèques Open-Source (Supply Chain)</h3>
+                        <p class="article-summary">Analyse des attaques par injection de dépendances malveillantes dans les dépôts npm et PyPI, et mise en place d'outils d'audit automatisés.</p>
+                    </div>
+                    <div class="article-footer">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Source : CERT-FR</span>
+                        <a href="#" class="article-link">Consulter <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <div>
+                        <div class="article-header">
+                            <span class="article-date"><i class="fa-regular fa-calendar"></i> Août 2026</span>
+                            <span class="article-badge">Cryptographie</span>
+                        </div>
+                        <h3 class="article-title">Passage au chiffrement robuste pour le stockage des mots de passe</h3>
+                        <p class="article-summary">Étude comparative des algorithmes d'inviolabilité modernes (Argon2id vs bcrypt) pour la sécurisation des bases de données d'applications.</p>
+                    </div>
+                    <div class="article-footer">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Source : ANSSI Guide</span>
+                        <a href="#" class="article-link">Consulter <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeText.textContent = 'Mode Clair';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeText.textContent = 'Mode Sombre';
+            }
+        }
+    </script>
 </body>
 </html>
