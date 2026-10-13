@@ -80,14 +80,16 @@
         }
 
         .sidebar-header h2 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #fff;
             margin-bottom: 5px;
+            text-align: center;
         }
 
         .sidebar-header p {
             font-size: 0.85rem;
             color: var(--sidebar-color);
+            text-align: center;
         }
 
         .sidebar-menu {
@@ -149,7 +151,7 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Contenu principal décalé pour ne pas être caché par la sidebar */
+        /* Contenu principal */
         main {
             margin-left: 270px;
             flex-grow: 1;
@@ -168,15 +170,18 @@
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
+        /* Titres centrés */
         section h1 {
             font-size: 1.8rem;
             color: var(--text-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
         }
 
         section h2 {
@@ -223,6 +228,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 15px;
+            justify-content: center;
         }
 
         .skill-badge {
@@ -239,6 +245,7 @@
             gap: 15px;
             flex-wrap: wrap;
             margin-top: 20px;
+            justify-content: center;
         }
 
         .btn {
@@ -317,11 +324,11 @@
     <!-- Contenu Principal -->
     <main>
         <section id="accueil">
-            <h1><i class="fa-solid fa-user-gear"></i> Accueil</h1>
+            <h1><i class="fa-solid fa-user-gear"></i> Portfolio BTS SIO SLAM</h1>
             <p>Bienvenue sur mon portfolio officiel. Je m'appelle <strong>Aloys Bouvier</strong>, étudiant en <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
             <p>Passionné par le développement d'applications et la sécurité informatique, je conçois des solutions logicielles performantes, ergonomiques et adaptées aux besoins des utilisateurs.</p>
             
-            <h2>Compétences & Stack Technique</h2>
+            <h2 style="text-align: center;">Compétences & Stack Technique</h2>
             <div class="skills-container">
                 <span class="skill-badge"><i class="fa-brands fa-python"></i> Python (Kivy, Streamlit)</span>
                 <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML5 / CSS3 / JavaScript</span>
@@ -333,13 +340,13 @@
 
         <section id="projets">
             <h1><i class="fa-solid fa-laptop-code"></i> Projets Réalisés</h1>
-            <p>Aperçu de mes projets de développement personnels et académiques :</p>
+            <p style="text-align: center;">Aperçu de mes projets de développement personnels et académiques :</p>
             
             <div class="project-grid">
                 <div class="project-card">
                     <h3>App de Gestion Financière</h3>
                     <p>Développement d'une application de bureau permettant le suivi des comptes, budgets et épargne personnelle avec stockage SQLite local.</p>
-                    <div class="skills-container">
+                    <div class="skills-container" style="justify-content: flex-start;">
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">Kivy</span>
                         <span class="skill-badge">SQLite</span>
@@ -349,7 +356,7 @@
                 <div class="project-card">
                     <h3>Portfolio Web BTS SIO</h3>
                     <p>Conception et intégration d'un site web dynamique, responsive avec gestion de thème sombre/clair pour la présentation de l'épreuve E4.</p>
-                    <div class="skills-container">
+                    <div class="skills-container" style="justify-content: flex-start;">
                         <span class="skill-badge">HTML5</span>
                         <span class="skill-badge">CSS3</span>
                         <span class="skill-badge">JavaScript</span>
@@ -360,7 +367,7 @@
 
         <section id="cv">
             <h1><i class="fa-solid fa-graduation-cap"></i> CV & Parcours</h1>
-            <p>Retrouvez mon parcours académique et mes expériences professionnelles. Vous pouvez télécharger mon CV au format PDF ou visiter mon profil professionnel LinkedIn.</p>
+            <p style="text-align: center;">Retrouvez mon parcours académique et mes expériences professionnelles. Vous pouvez télécharger mon CV au format PDF ou visiter mon profil professionnel LinkedIn.</p>
             <div class="btn-group">
                 <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="btn"><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV (PDF)</a>
                 <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="btn btn-linkedin"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
@@ -369,7 +376,7 @@
 
         <section id="tableau-synthese">
             <h1><i class="fa-solid fa-list-check"></i> Tableau de Synthèse (Épreuve E4)</h1>
-            <p>Le tableau de synthèse récapitule les compétences et réalisations acquises en entreprise et en centre de formation tout au long du cursus BTS SIO.</p>
+            <p style="text-align: center;">Le tableau de synthèse récapitule les compétences et réalisations acquises en entreprise et en centre de formation tout au long du cursus BTS SIO.</p>
             <div class="btn-group">
                 <a href="#" class="btn"><i class="fa-solid fa-file-excel"></i> Consulter le Tableau de Synthèse</a>
             </div>
@@ -377,72 +384,14 @@
 
         <section id="vt-cyber">
             <h1><i class="fa-solid fa-shield-virus"></i> Veille Technologique : Cybersécurité</h1>
-            <p>Suivi régulier des actualités, failles de sécurité, bonnes pratiques et protection des applications web contre les vulnérabilités courantes.</p>
+            <p style="text-align: center;">Suivi régulier des actualités, failles de sécurité, bonnes pratiques et protection des applications web contre les vulnérabilités courantes.</p>
         </section>
 
         <section id="vt-choisie">
             <h1><i class="fa-solid fa-brain"></i> Veille Technologique : Thème Librement Choisi</h1>
-            <p>Présentation de ma seconde thématique de veille axée sur les innovations en développement logiciel.</p>
+            <p style="text-align: center;">Présentation de ma seconde thématique de veille axée sur les innovations en développement logiciel.</p>
         </section>
 
         <section id="stage1">
             <h1><i class="fa-solid fa-building-user"></i> Stage de 1ère Année</h1>
-            <p>Présentation du contexte d'entreprise, des missions de développement réalisées, des outils déployés et du bilan d'expérience.</p>
-        </section>
-
-        <section id="stage2">
-            <h1><i class="fa-solid fa-diagram-project"></i> Stage de 2ème Année</h1>
-            <p>Détail du projet majeur d'ingénierie logicielle mené lors du stage de fin d'études.</p>
-        </section>
-    </main>
-
-    <script>
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeText = document.getElementById('themeText');
-        const html = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        setTheme(savedTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
-
-        function setTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            if (theme === 'dark') {
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.textContent = 'Mode Clair';
-            } else {
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.textContent = 'Mode Sombre';
-            }
-        }
-
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-menu a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+            <p style="text-align: center;">Présentation du
