@@ -46,7 +46,6 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -91,7 +90,6 @@
             margin-bottom: 15px;
         }
 
-        /* Liens rapides dans la sidebar */
         .sidebar-quick-links {
             display: flex;
             justify-content: center;
@@ -197,7 +195,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
-            scroll-margin-top: 40px;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
@@ -325,13 +322,12 @@
 </head>
 <body>
 
-    <!-- Barre latérale -->
+    <!-- Barre latérale commune (liens mis à jour vers de vraies pages HTML) -->
     <aside>
         <div>
             <div class="sidebar-header">
                 <h2>Aloys Bouvier</h2>
                 <p>BTS SIO SLAM</p>
-                <!-- Accès direct fixe -->
                 <div class="sidebar-quick-links">
                     <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="sidebar-quick-btn" title="Télécharger le CV">
                         <i class="fa-solid fa-file-pdf"></i> CV PDF
@@ -342,13 +338,14 @@
                 </div>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="#accueil" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
-                <li><a href="#projets"><i class="fa-solid fa-code"></i> Projets & Réalisations</a></li>
-                <li><a href="#tableau-synthese"><i class="fa-solid fa-table"></i> Tab. Synthèse</a></li>
-                <li><a href="#vt-cyber"><i class="fa-solid fa-shield-halved"></i> V.T. Cybersécurité</a></li>
-                <li><a href="#vt-choisie"><i class="fa-solid fa-microchip"></i> V.T. Thème Libre</a></li>
-                <li><a href="#stage1"><i class="fa-solid fa-briefcase"></i> Stage 1ère année</a></li>
-                <li><a href="#stage2"><i class="fa-solid fa-building"></i> Stage 2ème année</a></li>
+                <!-- MODIFIER la classe "active" selon la page actuelle -->
+                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
+                <li><a href="projets.html"><i class="fa-solid fa-code"></i> Projets & Réalisations</a></li>
+                <li><a href="synthese.html"><i class="fa-solid fa-table"></i> Tab. Synthèse</a></li>
+                <li><a href="veille-cyber.html"><i class="fa-solid fa-shield-halved"></i> V.T. Cybersécurité</a></li>
+                <li><a href="veille-libre.html"><i class="fa-solid fa-microchip"></i> V.T. Thème Libre</a></li>
+                <li><a href="stage1.html"><i class="fa-solid fa-briefcase"></i> Stage 1ère année</a></li>
+                <li><a href="stage2.html"><i class="fa-solid fa-building"></i> Stage 2ème année</a></li>
             </ul>
         </div>
         <div class="sidebar-footer">
@@ -360,10 +357,9 @@
         </div>
     </aside>
 
-    <!-- Contenu Principal -->
+    <!-- Contenu Principal (Exemple pour la page d'Accueil index.html) -->
     <main>
-
-        <section id="accueil">
+        <section>
             <h1><i class="fa-solid fa-user-gear"></i> Portfolio BTS SIO SLAM</h1>
             <p>Bienvenue sur mon portfolio officiel. Je m'appelle <strong>Aloys Bouvier</strong>, étudiant en <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
             <p>Passionné par le développement d'applications et la sécurité informatique, je conçois des solutions logicielles performantes, ergonomiques et adaptées aux besoins des utilisateurs.</p>
@@ -382,64 +378,10 @@
                 <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> Réseaux & Sécurité</span>
             </div>
         </section>
-
-        <section id="projets">
-            <h1><i class="fa-solid fa-laptop-code"></i> Projets Réalisés</h1>
-            <p>Aperçu de mes projets de développement personnels et académiques :</p>
-            
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>App de Gestion Financière</h3>
-                    <p>Développement d'une application de bureau permettant le suivi des comptes, budgets et épargne personnelle avec stockage SQLite local.</p>
-                    <div class="skills-container">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Kivy</span>
-                        <span class="skill-badge">SQLite</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Portfolio Web BTS SIO</h3>
-                    <p>Conception et intégration d'un site web dynamique, responsive avec gestion de thème sombre/clair pour la présentation de l'épreuve E4.</p>
-                    <div class="skills-container">
-                        <span class="skill-badge">HTML5</span>
-                        <span class="skill-badge">CSS3</span>
-                        <span class="skill-badge">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="tableau-synthese">
-            <h1><i class="fa-solid fa-list-check"></i> Tableau de Synthèse (Épreuve E4)</h1>
-            <p>Le tableau de synthèse récapitule les compétences et réalisations acquises en entreprise et en centre de formation tout au long du cursus BTS SIO.</p>
-            <div class="btn-group">
-                <a href="#" class="btn"><i class="fa-solid fa-file-excel"></i> Consulter le Tableau de Synthèse</a>
-            </div>
-        </section>
-
-        <section id="vt-cyber">
-            <h1><i class="fa-solid fa-shield-virus"></i> Veille Technologique : Cybersécurité</h1>
-            <p>Suivi régulier des actualités, failles de sécurité, bonnes pratiques et protection des applications web contre les vulnérabilités courantes.</p>
-        </section>
-
-        <section id="vt-choisie">
-            <h1><i class="fa-solid fa-brain"></i> Veille Technologique : Thème Librement Choisi</h1>
-            <p>Présentation de ma seconde thématique de veille axée sur les innovations en développement logiciel.</p>
-        </section>
-
-        <section id="stage1">
-            <h1><i class="fa-solid fa-building-user"></i> Stage de 1ère Année</h1>
-            <p>Présentation du contexte d'entreprise, des missions de développement réalisées, des outils déployés et du bilan d'expérience.</p>
-        </section>
-
-        <section id="stage2">
-            <h1><i class="fa-solid fa-diagram-project"></i> Stage de 2ème Année</h1>
-            <p>Détail du projet majeur d'ingénierie logicielle mené lors du stage de fin d'études.</p>
-        </section>
     </main>
 
     <script>
+        // Gestion du thème sombre / clair
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
@@ -465,27 +407,6 @@
                 themeText.textContent = 'Mode Sombre';
             }
         }
-
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-menu a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
     </script>
-
 </body>
 </html>
