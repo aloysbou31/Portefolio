@@ -71,7 +71,6 @@
             justify-content: space-between;
             box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
             z-index: 100;
-            transition: background-color 0.3s ease;
         }
 
         .sidebar-header {
@@ -132,7 +131,6 @@
             align-items: center;
         }
 
-        /* Bouton Theme Dark/Light */
         .theme-toggle-btn {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -151,16 +149,14 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Contenu principal à droite */
+        /* Contenu principal décalé pour ne pas être caché par la sidebar */
         main {
             margin-left: 270px;
             flex-grow: 1;
-            padding: 40px;
+            padding: 50px;
             max-width: 1100px;
-            width: calc(100% - 270px);
         }
 
-        /* Correction du masquage des titres sous le haut de l'écran lors du scroll */
         section {
             background-color: var(--card-bg);
             padding: 35px;
@@ -168,7 +164,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
-            scroll-margin-top: 30px;
+            scroll-margin-top: 40px;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
@@ -196,7 +192,6 @@
             color: var(--text-muted);
         }
 
-        /* Cartes de projets */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -223,7 +218,6 @@
             font-size: 1.1rem;
         }
 
-        /* Badges de compétences */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -240,7 +234,6 @@
             font-weight: 600;
         }
 
-        /* Boutons */
         .btn-group {
             display: flex;
             gap: 15px;
@@ -269,14 +262,13 @@
             transform: translateY(-1px);
         }
 
-        .btn-secondary {
-            background-color: #64748b;
+        .btn-linkedin {
+            background-color: #0a66c2;
         }
-        .btn-secondary:hover {
-            background-color: #475569;
+        .btn-linkedin:hover {
+            background-color: #044181;
         }
 
-        /* Responsive Mobile */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -288,7 +280,6 @@
             }
             main {
                 margin-left: 0;
-                width: 100%;
                 padding: 20px;
             }
         }
@@ -305,7 +296,7 @@
             </div>
             <ul class="sidebar-menu">
                 <li><a href="#accueil" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
-                <li><a href="#projets"><i class="fa-solid fa-code"></i> Projets & Realisations</a></li>
+                <li><a href="#projets"><i class="fa-solid fa-code"></i> Projets & Réalisations</a></li>
                 <li><a href="#cv"><i class="fa-solid fa-file-pdf"></i> CV & Parcours</a></li>
                 <li><a href="#tableau-synthese"><i class="fa-solid fa-table"></i> Tab. Synthèse</a></li>
                 <li><a href="#vt-cyber"><i class="fa-solid fa-shield-halved"></i> V.T. Cybersécurité</a></li>
@@ -328,7 +319,7 @@
         <section id="accueil">
             <h1><i class="fa-solid fa-user-gear"></i> Accueil</h1>
             <p>Bienvenue sur mon portfolio officiel. Je m'appelle <strong>Aloys Bouvier</strong>, étudiant en <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
-            <p>Passionné par le développement d'applications, le génie logiciel et la sécurité informatique (suite à un parcours en Cybersécurité et Réseaux), je conçois des solutions logicielles performantes, ergonomiques et sécurisées.</p>
+            <p>Passionné par le développement d'applications et la sécurité informatique, je conçois des solutions logicielles performantes, ergonomiques et adaptées aux besoins des utilisateurs.</p>
             
             <h2>Compétences & Stack Technique</h2>
             <div class="skills-container">
@@ -336,8 +327,7 @@
                 <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML5 / CSS3 / JavaScript</span>
                 <span class="skill-badge"><i class="fa-solid fa-database"></i> SQL / SQLite</span>
                 <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git & Versioning</span>
-                <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> Réseaux & Diagnostic (Nmap, Wireshark)</span>
-                <span class="skill-badge"><i class="fa-brands fa-linux"></i> Linux / Administration Système</span>
+                <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> Réseaux & Sécurité</span>
             </div>
         </section>
 
@@ -370,10 +360,10 @@
 
         <section id="cv">
             <h1><i class="fa-solid fa-graduation-cap"></i> CV & Parcours</h1>
-            <p>Mon parcours combine une solide base en <strong>Cybersécurité et Réseaux</strong> avec une spécialisation poussée en <strong>Développement de Solutions Logicielles (SLAM)</strong>.</p>
+            <p>Retrouvez mon parcours académique et mes expériences professionnelles. Vous pouvez télécharger mon CV au format PDF ou visiter mon profil professionnel LinkedIn.</p>
             <div class="btn-group">
-                <a href="#" class="btn"><i class="fa-solid fa-download"></i> Télécharger mon CV (PDF)</a>
-                <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> Mon GitHub</a>
+                <a href="CV_Aloys_Bouvier.pdf" target="_blank" class="btn"><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV (PDF)</a>
+                <a href="https://www.linkedin.com/in/aloys-bouvier" target="_blank" class="btn btn-linkedin"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
             </div>
         </section>
 
@@ -387,12 +377,12 @@
 
         <section id="vt-cyber">
             <h1><i class="fa-solid fa-shield-virus"></i> Veille Technologique : Cybersécurité</h1>
-            <p>Suivi régulier des actualités, failles de sécurité (CVE), bonnes pratiques d'ANSSI, audits et protection des applications web contre les attaques (OWASP Top 10).</p>
+            <p>Suivi régulier des actualités, failles de sécurité, bonnes pratiques et protection des applications web contre les vulnérabilités courantes.</p>
         </section>
 
         <section id="vt-choisie">
             <h1><i class="fa-solid fa-brain"></i> Veille Technologique : Thème Librement Choisi</h1>
-            <p>Présentation de ma seconde thématique de veille axée sur les innovations en développement logiciel et frameworks modernes.</p>
+            <p>Présentation de ma seconde thématique de veille axée sur les innovations en développement logiciel.</p>
         </section>
 
         <section id="stage1">
@@ -407,13 +397,11 @@
     </main>
 
     <script>
-        // 1. Gestion du thème sombre / clair
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
         const html = document.documentElement;
 
-        // Charger le thème enregistré ou la préférence système
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
 
@@ -435,7 +423,6 @@
             }
         }
 
-        // 2. Navigation dynamique (Menu actif au défilement)
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar-menu a');
 
@@ -443,7 +430,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 80) {
+                if (window.pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
